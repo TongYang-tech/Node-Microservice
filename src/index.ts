@@ -1,2 +1,9 @@
-const app = "This is the entry point of the NodeJS Microservice application.";
-console.log(app);
+import http from "http";
+import app from "./app";
+
+const httpServer = http.createServer(app);
+const port = 8080;
+
+httpServer.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
