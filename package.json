@@ -1,0 +1,40 @@
+{
+  "name": "nodejs-microservice",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "rm -rf ./dist",
+    "build": "npm run clean && tsc",
+    "lint:fix": "npx eslint ./src --ext .ts --fix",
+    "test": "npm run lint:fix &&vitest run --pool=threads --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TongYang-tech/NodeJS-Microservice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/TongYang-tech/NodeJS-Microservice/issues"
+  },
+  "homepage": "https://github.com/TongYang-tech/NodeJS-Microservice#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.0.10",
+    "@vitest/coverage-v8": "^4.0.18",
+    "eslint": "^9.39.2",
+    "globals": "^17.1.0",
+    "jiti": "^2.6.1",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0",
+    "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "express": "^5.2.1",
+    "http": "^0.0.1-security"
+  }
+}

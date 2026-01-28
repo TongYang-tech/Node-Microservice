@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-nodejs-microservice
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-nodejs-microservice
+  template:
+    metadata:
+      labels:
+        app: my-nodejs-microservice
+    spec:
+      containers:
+        - name: my-nodejs-microservice
+          image: my-app:latest
+          imagePullPolicy: Never # Only set to Never for local run on minikube
+          ports:
+            - containerPort: 8080
+          resources: # dummy values for resource requests and limits
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodejs-microservice
+spec:
+  selector:
+    app: my-nodejs-microservice
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort # set to nodePort for local run on minikube
