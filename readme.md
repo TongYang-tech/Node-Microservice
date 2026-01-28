@@ -1,3 +1,3 @@
 # Microservices Application
 
-This is an software architectural pattern focusing on service-to-service communication on Kubernetes
+This is a software architectural pattern focusing on service-to-service communication on Kubernetes
