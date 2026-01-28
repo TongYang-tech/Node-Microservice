@@ -25,3 +25,16 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-nodejs-microservice
+spec:
+  selector:
+    app: my-nodejs-microservice
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: NodePort # set to nodePort for local run on minikube
