@@ -4,7 +4,7 @@ RUN addgroup -S appgroup && adduser -S appuser -G appgroup
 FROM base AS dep
 USER root:root
 RUN apk update \
-    && apk add --no-cache python3 make gcc g++ curl bash jq # random needed build tools
+    && apk add --no-cache python3 curl bash jq # random needed build tools
 
 FROM dep AS build
 RUN mkdir -p /tmp/app \
