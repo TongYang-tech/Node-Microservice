@@ -6,5 +6,6 @@ export default defineConfig({
       enabled: true,
       include: ["src/**/*.ts", "test/**/*.ts"],
     },
+    exclude: ["node_modules", "dist"],
   },
 });
