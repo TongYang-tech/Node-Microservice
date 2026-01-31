@@ -23,6 +23,7 @@
   "homepage": "https://github.com/TongYang-tech/NodeJS-Microservice#readme",
   "devDependencies": {
     "@eslint/js": "^9.39.2",
+    "@types/cookie-parser": "^1.4.10",
     "@types/express": "^5.0.6",
     "@types/node": "^25.0.10",
     "@vitest/coverage-v8": "^4.0.18",
@@ -34,6 +35,7 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
+    "cookie-parser": "^1.4.7",
     "express": "^5.2.1",
     "http": "^0.0.1-security"
   }

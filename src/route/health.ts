@@ -1,12 +1,10 @@
 import express from "express";
 
-const router = express.Router();
-
-router.get("/health", (_, res) => {
+const health = (_: express.Request, res: express.Response) => {
   res.status(200).json({
-    status: "OK",
+    description: "OK",
     timestamp: new Date().toISOString(),
   });
-});
+};
 
-export default router;
+export default health;

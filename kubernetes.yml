@@ -21,17 +21,17 @@ spec:
           livenessProbe:
             httpGet:
               port: 8080
-              path: "/health"
+              path: "/placeholder/health"
             initialDelaySeconds: 15
           startupProbe:
             httpGet:
               port: 8080
-              path: "/health"
+              path: "/placeholder/health"
             initialDelaySeconds: 15
           readinessProbe:
             httpGet:
               port: 8080
-              path: "/health"
+              path: "/placeholder/health"
             initialDelaySeconds: 15
           resources: # dummy values for resource requests and limits
             requests:
