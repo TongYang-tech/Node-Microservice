@@ -15,7 +15,7 @@ spec:
       containers:
         - name: my-nodejs-microservice
           image: my-app:latest
-          imagePullPolicy: Never # Only set to Never for local run on minikube
+          imagePullPolicy: IfNotPresent # Only set to Never for local run on minikube
           ports:
             - containerPort: 8080
           livenessProbe:
