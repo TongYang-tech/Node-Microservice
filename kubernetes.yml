@@ -15,9 +15,24 @@ spec:
       containers:
         - name: my-nodejs-microservice
           image: my-app:latest
-          imagePullPolicy: Never # Only set to Never for local run on minikube
+          imagePullPolicy: IfNotPresent # Only set to Never for local run on minikube
           ports:
             - containerPort: 8080
+          livenessProbe:
+            httpGet:
+              port: 8080
+              path: "/placeholder/health"
+            initialDelaySeconds: 15
+          startupProbe:
+            httpGet:
+              port: 8080
+              path: "/placeholder/health"
+            initialDelaySeconds: 15
+          readinessProbe:
+            httpGet:
+              port: 8080
+              path: "/placeholder/health"
+            initialDelaySeconds: 15
           resources: # dummy values for resource requests and limits
             requests:
               memory: "256Mi"

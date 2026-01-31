@@ -1,8 +1,12 @@
 import express from "express";
-import healhRouter from "./route/health";
+import route from "./route/index";
+import cookieParser from "cookie-parser";
 
 const app = express();
+const basePath = "/placeholder";
 
-app.use(healhRouter);
+app.use(express.json());
+app.use(cookieParser());
+app.use(basePath, route);
 
 export default app;
