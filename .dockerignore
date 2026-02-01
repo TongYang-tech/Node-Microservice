@@ -1,0 +1,6 @@
+node_modules/
+bruno-v1-collections/
+test/
+coverage/
+kubernetes.yaml
+sealed-secret.yaml

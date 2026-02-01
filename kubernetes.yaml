@@ -41,6 +41,14 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+          volumeMounts:
+            - name: secret-volume
+              mountPath: "/etc/secrets/mysecret"
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: my-nodejs-microservice-secret
+
 ---
 apiVersion: v1
 kind: Service
@@ -55,3 +63,12 @@ spec:
       port: 8080
       targetPort: 8080
   type: NodePort # set to nodePort for local run on minikube
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: my-nodejs-microservice-sa
+  namespace: default
+secrets:
+  - name: my-nodejs-microservice-secret
+    namespace: default
