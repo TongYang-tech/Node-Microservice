@@ -41,6 +41,12 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: my-nodejs-microservice-secret
+                  key: API_KEY
           volumeMounts:
             - name: secret-volume
               mountPath: "/etc/secrets/mysecret"
