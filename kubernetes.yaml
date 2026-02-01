@@ -2,6 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-nodejs-microservice
+  namespace: default
 spec:
   replicas: 3
   selector:
@@ -40,11 +41,26 @@ spec:
             limits:
               memory: "512Mi"
               cpu: "500m"
+          env:
+            - name: API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: my-nodejs-microservice-secret
+                  key: API_KEY
+          volumeMounts:
+            - name: secret-volume
+              mountPath: "/etc/secrets/mysecret"
+      volumes:
+        - name: secret-volume
+          secret:
+            secretName: my-nodejs-microservice-secret
+
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: my-nodejs-microservice
+  namespace: default
 spec:
   selector:
     app: my-nodejs-microservice
