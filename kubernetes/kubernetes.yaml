@@ -36,8 +36,8 @@ spec:
             initialDelaySeconds: 15
           resources: # dummy values for resource requests and limits
             requests:
-              memory: "256Mi"
-              cpu: "250m"
+              memory: "512Mi"
+              cpu: "500m"
             limits:
               memory: "512Mi"
               cpu: "500m"
@@ -69,3 +69,18 @@ spec:
       port: 8080
       targetPort: 8080
   type: NodePort # set to nodePort for local run on minikube
+
+---
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+  name: my-nodejs-microservice
+  namespace: default
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-nodejs-microservice
+  minReplicas: 3
+  maxReplicas: 9
+  targetCPUUtilizationPercentage: 70
