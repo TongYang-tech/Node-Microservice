@@ -71,12 +71,16 @@ spec:
   type: NodePort # set to nodePort for local run on minikube
 
 ---
-apiVersion: v1
-kind: HorizontalPodAutoScaler
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
 metadata:
   name: my-nodejs-microservice
   namespace: default
 spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: my-nodejs-microservice
   minReplicas: 3
   maxReplicas: 9
   targetCPUUtilizationPercentage: 70
