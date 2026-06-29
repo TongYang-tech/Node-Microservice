@@ -34,26 +34,13 @@ spec:
               port: 8080
               path: "/placeholder/health"
             initialDelaySeconds: 15
-          resources: # dummy values for resource requests and limits
+          resources:
             requests:
               memory: "512Mi"
               cpu: "500m"
             limits:
               memory: "512Mi"
               cpu: "500m"
-          env:
-            - name: API_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: my-nodejs-microservice-secret
-                  key: API_KEY
-          volumeMounts:
-            - name: secret-volume
-              mountPath: "/etc/secrets/mysecret"
-      volumes:
-        - name: secret-volume
-          secret:
-            secretName: my-nodejs-microservice-secret
 
 ---
 apiVersion: v1
